@@ -45,13 +45,23 @@ def lambda_handler(event, context):
     kms_key_id = '49631129-1f33-48bc-acbd-d0aa548ae2e7'
     
 
-    # response_1 = client.start_export_task(
-    #     ExportTaskIdentifier=export_task_1,
-    #     SourceArn=arn_1,
-    #     S3BucketName=s3_name_1,
-    #     IamRoleArn=iam_role_name,
-    #     KmsKeyId=kms_key_id,
-    #     S3Prefix=s3_Prefix,
+    response_1 = client.start_export_task(
+        ExportTaskIdentifier=export_task_1,
+        SourceArn=arn_1,
+        S3BucketName=s3_name_1,
+        IamRoleArn=iam_role_name,
+        KmsKeyId=kms_key_id,
+        S3Prefix=s3_Prefix,
+    )
+    
+    # response = client.start_export_task(
+    # ExportTaskIdentifier='string',
+    # SourceArn='string',
+    # S3BucketName='string',
+    # IamRoleArn='string',
+    # KmsKeyId='string',
+    # S3Prefix='string',
+    # 
     # )
     
     
