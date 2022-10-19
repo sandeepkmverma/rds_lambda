@@ -43,7 +43,6 @@ def lambda_handler(event, context):
 
     iam_role_name = 'arn:aws:iam::281176377529:role/production-export-rds-snapshots-to-s3'
     kms_key_id = '49631129-1f33-48bc-acbd-d0aa548ae2e7'
-    
 
     response_1 = client.start_export_task(
         ExportTaskIdentifier=export_task_1,
@@ -54,29 +53,18 @@ def lambda_handler(event, context):
         S3Prefix=s3_Prefix,
     )
     
-    # response = client.start_export_task(
-    # ExportTaskIdentifier='string',
-    # SourceArn='string',
-    # S3BucketName='string',
-    # IamRoleArn='string',
-    # KmsKeyId='string',
-    # S3Prefix='string',
-    # 
-    # )
+    export_task_2 = "test-1-" + snapshot_name_2
+    s3_name_2 = 'production-tp-rds-snapshots'
+    s3_Prefix_2 = 'tatasky-production-native-selfcare-aurora-cluster'
     
-    
-    # export_task_2 = "test-1-" + snapshot_name_2
-    # s3_name_2 = 'production-tp-rds-snapshots'
-    # s3_Prefix_2 = 'tatasky-production-native-selfcare-aurora-cluster'
-    # 
-    # response_2 = client.start_export_task(
-    #     ExportTaskIdentifier=export_task_2,
-    #     SourceArn=arn_2,
-    #     S3BucketName=s3_name_2,
-    #     IamRoleArn=iam_role_name,
-    #     KmsKeyId=kms_key_id,
-    #     S3Prefix=s3_Prefix_2,
-    # )
+    response_2 = client.start_export_task(
+        ExportTaskIdentifier=export_task_2,
+        SourceArn=arn_2,
+        S3BucketName=s3_name_2,
+        IamRoleArn=iam_role_name,
+        KmsKeyId=kms_key_id,
+        S3Prefix=s3_Prefix_2,
+    )
 
 
 
