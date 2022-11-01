@@ -29,14 +29,14 @@ def lambda_handler(event, context):
 
         snapshot_arn = min(db_snapshots_dict.items())[0]
         export_snapshot_arn.append(snapshot_arn)
-
+    
+    c = 0
+    
     for arn in export_snapshot_arn:
             random_number = str(randrange(100, 10000))
             exportTaskId = arn[57:108] + random_number
             print(exportTaskId)
-            s3_Prefix = db_name
-
-
+            s3_Prefix = db_list[c]
             response = client.start_export_task(
                 ExportTaskIdentifier=exportTaskId,
                 SourceArn=arn,
@@ -45,9 +45,8 @@ def lambda_handler(event, context):
                 KmsKeyId=kms_key_id,
                 S3Prefix=s3_Prefix,
                 )
-
+            c += 1
             print(response)
-
 
     return {
         'statusCode': 200,
